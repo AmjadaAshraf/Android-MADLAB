@@ -1,0 +1,64 @@
+XML:
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="UserNamme" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#3f76ff"
+        android:text="Login"
+        android:textColor="#fff" />
+
+
+</LinearLayout>
+JAVA:
+package com.example.authentication;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Button;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+     EditText username,password;
+     Button login;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        username=findViewById(R.id.username);
+        password=findViewById(R.id.password);
+        login=findViewById(R.id.login);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(username.getText().toString().equals("admin")&&password.getText().toString().equals("1234"))
+                    Toast.makeText(getApplicationContext(), "Authenticatted", Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(getApplicationContext(), "wrong credentials", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+}
