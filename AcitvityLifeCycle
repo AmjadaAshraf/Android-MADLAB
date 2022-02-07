@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="379dp"
+        android:layout_height="50dp"
+        android:text="Activity Life Cycle"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+JAVA:
+
+package com.example.activitylifecycle;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+    protected void onStart(){
+        super.onStart();
+        Log.d("Activity Life Cycle","onStart invoked");
+        Toast.makeText(MainActivity.this,"onStart is invoked",Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Log.d("Activity Life Cycle","in method onCreate");
+        Toast.makeText(MainActivity.this,"onCreate is invoked",Toast.LENGTH_LONG).show();
+    }
+    protected void onStop(){
+        super.onStop();
+        Log.d("Activity Life Cycle","in method onStop");
+        Toast.makeText(MainActivity.this,"onStop is invoked",Toast.LENGTH_LONG).show();
+    }
+    protected void onResume(){
+        super.onResume();
+        Log.d("Activity Life Cycle","in method onResume");
+        Toast.makeText(MainActivity.this,"onresume is invoked",Toast.LENGTH_LONG).show();
+    }
+    protected void onPause(){
+        super.onPause();
+        Log.d("Activity Life Cycle","in method onPause");
+        Toast.makeText(MainActivity.this,"onPause is invoked",Toast.LENGTH_LONG).show();
+    }
+    protected void onDestroy(){
+        super.onDestroy();
+        Log.d("Activity Life Cycle","in method onDestroy");
+        Toast.makeText(MainActivity.this,"onDestroy is invoked",Toast.LENGTH_LONG).show();
+    }
+}
